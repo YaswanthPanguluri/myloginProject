@@ -1,3 +1,7 @@
+var cy = new Date().getFullYear();
+document.getElementById("currentYear").innerHTML = '\u00A9' + cy+"-"+(cy+1);
+
+
 function loginForm() {
   // Get the values of the email and password fields
   var email = document.getElementById('inputEmail').value;
