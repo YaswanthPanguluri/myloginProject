@@ -7,8 +7,9 @@ function loginForm() {
   if (email === 'demo@gmail.com' && password === '123') {
     // If validation is successful, redirect to success.html
     window.location.href = 'success.html';
-  } else {
+  } 
+  else {
     // Display an error message or perform any other necessary actions
-    alert('Invalid email or password');
+    window.location.href = 'invalid.html';
   }
 }
