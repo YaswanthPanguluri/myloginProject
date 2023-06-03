@@ -9,7 +9,9 @@ function loginForm() {
     window.location.href = 'success.html';
   } 
   else {
-    // Display an error message or perform any other necessary actions
+    // If validation is not successful, redirect to invalid.html
     window.location.href = 'invalid.html';
   }
 }
+
+
