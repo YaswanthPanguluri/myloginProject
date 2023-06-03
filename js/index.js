@@ -6,7 +6,6 @@ function loginForm() {
   // Perform validation
   if (email === 'demo@gmail.com' && password === '123') {
     // If validation is successful, redirect to success.html
-    // window.location.href = 'file:///F:/js/loginProject/success.html';
     window.location.href = 'success.html';
   } else {
     // Display an error message or perform any other necessary actions
