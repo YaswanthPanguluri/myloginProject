@@ -54,6 +54,7 @@ function getFormData(e) {
 
   let inputDataJsonObject = JSON.stringify(inputDataObject);
   console.log(inputDataJsonObject);
+  document.getElementById("displayValidation").innerText = "display validation text";
   dataValidation(inputDataJsonObject)
 } 
 
@@ -64,7 +65,7 @@ function dataValidation(inputDataJsonObject){
     emailIdValidation(inputDataJsonObject.emailId);
     phoneNumberValidation(inputDataJsonObject.phoneNumber);
     passwordValidation(inputDataJsonObject.password);
-    confirmPasswordValidation(inputDataJsonObject.confirmPassword);
+    confirmPasswordValidation(inputDataJsonObject.confirmPassword, inputDataJsonObject.password);
     genderValidation(inputDataJsonObject.gender);
     address1Validation(inputDataJsonObject.address1);
     address2Validation(inputDataJsonObject.address2);
@@ -74,10 +75,131 @@ function dataValidation(inputDataJsonObject){
     termsAndConditionsValidation(inputDataJsonObject.termsAndConditions);
 }
 
-function fNameValidation(fName){
- 
+function fNameValidation(fName) {
+  if (fName.trim() === "") {
+    console.error("First name is required");
+    return false;
+  }
+
+  const specialCharsRegex = /[!@#$%^&*(),.?":{}|<>0-9]/;
+  if (specialCharsRegex.test(fName)) {
+    console.error("First name should not contain special characters or numbers");
+    return false;
+  }
+
+  return true;
 }
 
-function lNameValidation(lName){
+function lNameValidation(lName) {
+  if (fName.trim() === "") {
+    console.error("First name is required");
+    return false;
+  }
 
+  const specialCharsRegex = /[!@#$%^&*(),.?":{}|<>0-9]/;
+  if (specialCharsRegex.test(fName)) {
+    console.error("Last name should not contain special characters or numbers");
+    return false;
+  }
+
+  return true;
+}
+
+function emailIdValidation(emailId) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(emailId)) {
+    console.error("Invalid email address");
+    return false;
+  }
+  return true;
+}
+
+function phoneNumberValidation(phoneNumber) {
+  const phoneRegex = /^\d{10}$/;
+  if (!phoneRegex.test(phoneNumber)) {
+    console.error("Invalid phone number");
+    return false;
+  }
+  return true;
+}
+
+function passwordValidation(password) {
+  if (password.length < 8) {
+    console.error("Password should be at least 8 characters long");
+    return false;
+  }
+  return true;
+}
+
+function confirmPasswordValidation(confirmPassword, password) {
+  if (confirmPassword !== password) {
+    console.error("Passwords do not match");
+    return false;
+  }
+  return true;
+}
+
+function genderValidation(gender) {
+  if (!gender) {
+    console.error("Please select a gender");
+    return false;
+  }
+  return true;
+}
+
+function address1Validation(address1) {
+  if (address1.trim() === "") {
+    console.error("Address line 1 is required");
+    return false;
+  }
+  return true;
+}
+
+function address2Validation(address2) {
+  // Optional: Implement validation if necessary
+  return true;
+}
+
+function cityValidation(city) {
+ 
+  if (city.trim() === "") {
+    console.error("City is required");
+    return false;
+  }
+
+  const specialCharsRegex = /[!@#$%^&*(),.?":{}|<>0-9]/;
+  if (specialCharsRegex.test(city)) {
+    console.error("City name should not contain special characters or numbers");
+    return false;
+  }
+
+  return true;
+
+
+
+}
+
+function stateValidation(state) {
+  if (state === "NA") {
+    console.error("Please select a state");
+    return false;
+  }
+  return true;
+}
+
+function zipValidation(zip) {
+  const zipRegex = /^\d{5}$/;
+  if (!zipRegex.test(zip)) {
+    console.error("Invalid ZIP code");
+    return false;
+  }
+  return true;
+}
+
+function termsAndConditionsValidation(termsAndConditions) {
+  if (!termsAndConditions) {
+    console.error("You must agree to the terms and conditions");
+    return false;
+  }
+  return true;
 }
